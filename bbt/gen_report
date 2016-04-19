@@ -1,0 +1,21 @@
+#!/usr/bin/env ruby
+require_relative "bbt_csvparser"
+
+if ARGV.empty?
+  puts "Must specify the csv file downloaded"
+  exit 1
+end
+
+input_file = ARGV[0]
+bbt_csvparser = BBT_CsvParser.new(input_file)
+puts '------------------------'
+puts "TotalCredit  || #{bbt_csvparser.total_credits}"
+puts '------------------------'
+
+puts '------------------------'
+puts "TotalDebit  || #{bbt_csvparser.total_debits}"
+puts '------------------------'
+
+puts "Net Profit = #{bbt_csvparser.net_profit}"
+
+bbt_csvparser.balance_sheet 'balance_sheet_2015.csv'

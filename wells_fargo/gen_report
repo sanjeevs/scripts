@@ -1,0 +1,21 @@
+#!/usr/bin/env ruby
+require_relative "wf_csvparser"
+
+if ARGV.empty?
+  puts "Must specify the csv file downloaded"
+  exit 1
+end
+
+input_file = ARGV[0]
+wf_csvparser = WF_CsvParser.new(input_file)
+puts '------------------------'
+puts "TotalCredit  || #{wf_csvparser.total_credits}"
+puts '------------------------'
+
+puts '------------------------'
+puts "TotalDebit  || #{wf_csvparser.total_debits}"
+puts '------------------------'
+
+puts "Net Profit = #{wf_csvparser.net_profit}"
+
+wf_csvparser.balance_sheet 'balance_sheet_2015.csv'
